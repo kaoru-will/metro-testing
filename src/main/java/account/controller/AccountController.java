@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import account.entity.Accounts;
 import account.service.AccountsService;
+import accounts.pojo.AccountsPOJO;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -22,6 +23,12 @@ public class AccountController {
 		
 		accountService.accountCreation(account);
 		return "Hello World";
+	}
+	
+	@GetMapping("/account/{customerNumber}")
+	public AccountsPOJO getCustomerAccount() {
+		
+		return null;
 	}
 
 }

@@ -1,9 +1,20 @@
 package account.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import account.constant.AccountType;
+
+
+
 
 @Entity
 public class Accounts {
@@ -16,6 +27,11 @@ public class Accounts {
 	private String customerEmail;
 	private String address1;
 	private String address2;
+	
+
+	@OneToMany(mappedBy = "accountNumber", cascade = CascadeType.ALL)
+	private List<BankAccounts> bankAccounts;
+	
 	
 	
 	public Accounts() {
@@ -33,6 +49,8 @@ public class Accounts {
 		this.address1 = address1;
 		this.address2 = address2;
 	}
+	
+	
 
 
 	public Long getCustomerNumber() {
@@ -71,6 +89,9 @@ public class Accounts {
 	public void setAddress2(String address2) {
 		this.address2 = address2;
 	}
+
+
+	
 	
 	
 	
