@@ -1,26 +1,12 @@
-package account.entity;
+package dto;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
-import account.constant.AccountType;
+import account.entity.BankAccounts;
 
+public class AccountDTO {
 
-
-
-@Entity
-public class Accounts {
-	
-	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO) 
 	private Long customerNumber;
 	private String customerName;
 	private String customerMobile;
@@ -29,17 +15,13 @@ public class Accounts {
 	private String address2;
 	
 
-	@OneToMany(mappedBy = "account")
-	private List<BankAccounts> bankAccounts;
 	
-	
-	
-	public Accounts() {
+	public AccountDTO() {
 		super();
 	}
 	
 	
-	public Accounts(Long customerNumber, String customerName, String customerMobile, String customerEmail,
+	public AccountDTO(Long customerNumber, String customerName, String customerMobile, String customerEmail,
 			String address1, String address2) {
 		super();
 		this.customerNumber = customerNumber;
@@ -50,22 +32,6 @@ public class Accounts {
 		this.address2 = address2;
 	}
 	
-	
-	
-	
-
-
-	public Accounts(Long customerNumber, String customerName, String customerMobile, String customerEmail,
-			String address1, String address2, List<BankAccounts> bankAccounts) {
-		super();
-		this.customerNumber = customerNumber;
-		this.customerName = customerName;
-		this.customerMobile = customerMobile;
-		this.customerEmail = customerEmail;
-		this.address1 = address1;
-		this.address2 = address2;
-		this.bankAccounts = bankAccounts;
-	}
 
 
 	public Long getCustomerNumber() {
@@ -104,25 +70,5 @@ public class Accounts {
 	public void setAddress2(String address2) {
 		this.address2 = address2;
 	}
-
-
-	public List<BankAccounts> getBankAccounts() {
-		return bankAccounts;
-	}
-
-
-	public void setBankAccounts(List<BankAccounts> bankAccounts) {
-		this.bankAccounts = bankAccounts;
-	}
-	
-	
-
-
-	
-	
-	
-	
-	
-	
 
 }

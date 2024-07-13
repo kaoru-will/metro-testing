@@ -3,6 +3,7 @@ package account.entity;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,11 +22,21 @@ public class BankAccounts {
 	private AccountType accountType;
 	private double balance;
 	
-	@ManyToOne
-	@JoinColumn(name = "customerNumber")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "account_customerNumber")
 	private Accounts account;
 
 	
+	
+
+	public BankAccounts() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
 
 	public BankAccounts(Long accountNumber, AccountType accountType, double balance, Accounts account) {
 		super();
@@ -37,6 +48,30 @@ public class BankAccounts {
 	
 	
 	
+	
+	
+	public BankAccounts(AccountType accountType, double balance) {
+		super();
+		this.accountType = accountType;
+		this.balance = balance;
+	}
+
+	
+
+
+
+
+	public BankAccounts(AccountType accountType, double balance, Accounts account) {
+		super();
+		this.accountType = accountType;
+		this.balance = balance;
+		this.account = account;
+	}
+
+
+
+
+
 	public Long getAccountNumber() {
 		return accountNumber;
 	}
