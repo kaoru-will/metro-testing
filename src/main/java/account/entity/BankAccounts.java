@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import account.constant.AccountType;
 
 @Entity
@@ -18,10 +20,12 @@ public class BankAccounts {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO) 
 	private Long accountNumber;
+	
 	@Enumerated(EnumType.STRING)
 	private AccountType accountType;
 	private double balance;
 	
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "account_customerNumber")
 	private Accounts account;

@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import account.constant.AccountType;
 
 
@@ -29,8 +31,9 @@ public class Accounts {
 	private String address2;
 	
 
+
 	@OneToMany(mappedBy = "account")
-	private List<BankAccounts> bankAccounts;
+	private List<BankAccounts> savings;
 	
 	
 	
@@ -64,7 +67,7 @@ public class Accounts {
 		this.customerEmail = customerEmail;
 		this.address1 = address1;
 		this.address2 = address2;
-		this.bankAccounts = bankAccounts;
+		this.savings = bankAccounts;
 	}
 
 
@@ -107,12 +110,12 @@ public class Accounts {
 
 
 	public List<BankAccounts> getBankAccounts() {
-		return bankAccounts;
+		return savings;
 	}
 
 
 	public void setBankAccounts(List<BankAccounts> bankAccounts) {
-		this.bankAccounts = bankAccounts;
+		this.savings = bankAccounts;
 	}
 	
 	

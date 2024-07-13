@@ -36,8 +36,8 @@ public class AccountServicesImp implements AccountsService {
 		
 		Accounts newAccount = this.accountRepo.save(accounts);
 		
-		BankAccounts newSavings = new BankAccounts(AccountType.S, 0, newAccount);
-		BankAccounts newCurrent = new BankAccounts(AccountType.C, 0, newAccount);
+		BankAccounts newSavings = new BankAccounts(AccountType.Savings, 0, newAccount);
+		BankAccounts newCurrent = new BankAccounts(AccountType.Current, 0, newAccount);
 		
 		bankAccountRepo.save(newSavings);
 		bankAccountRepo.save(newCurrent);
